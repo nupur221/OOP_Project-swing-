@@ -196,8 +196,7 @@ public class Server implements ActionListener {
     public static void main(String[] args) {
         new Server();
         
-        try {
-            ServerSocket skt = new ServerSocket(6001);
+        try (ServerSocket skt = new ServerSocket(6001)) {
             while(true) {
                 Socket s = skt.accept();
                 DataInputStream din = new DataInputStream(s.getInputStream());
@@ -219,4 +218,3 @@ public class Server implements ActionListener {
     }
 }
     
-
